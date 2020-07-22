@@ -19,7 +19,8 @@
             <div name=container>
                 <div>username</div>
                 <div name=password>password</div>
-                <input type="password" id=userpw>
+                <input type="hidden" id=userid name=userid value="<?php echo $userid ?>" >
+                <input type="password" id=userpw name=userpw>
             </div>
             <span onClick="location.replace('login_id.html')">back</span>
             <input type="submit" name="submit" value="login">
