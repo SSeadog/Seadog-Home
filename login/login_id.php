@@ -10,7 +10,7 @@
                 <div name=id>id</div>
                 <input type="text" id=userid name=userid>
             </div>
-            <span onClick="">make account</span>
+            <span onClick="location.replace('../sign_up/add_form.php')">make account</span>
             <input type="submit" name="submit" value="next">
         </form>
     </body>

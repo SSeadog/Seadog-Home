@@ -7,6 +7,8 @@
     $res=mysqli_query($connect, $sql);
     $info=mysqli_fetch_row($res);
     echo $info[0];
+
+    mysqli_close($connect);
 ?>
 
 <html>
@@ -19,7 +21,7 @@
             <div name=container>
                 <div>username</div>
                 <div name=password>password</div>
-                <input type="hidden" id=userid name=userid value="<?php echo $userid ?>" >
+                <input type="hidden" id=userid name=userid value="<?php echo $userid ?>">
                 <input type="password" id=userpw name=userpw>
             </div>
             <span onClick="location.replace('login_id.html')">back</span>
