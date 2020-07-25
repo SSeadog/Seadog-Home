@@ -10,7 +10,8 @@
 
     if($res) {
         echo "등록 성공";
-        echo "<script>location.replace('../home/home.php');</script>";
+
+        echo "<button onClick=location.replace('../home/home.php')>Click</button>";
     } else {
         echo "등록 실패";
     }
