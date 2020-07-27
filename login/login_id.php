@@ -15,14 +15,3 @@
         </form>
     </body>
 </html>
-
-<script>
-    function chk_id()
-    {
-        if(login_form_id.userid.strlen<=2) {
-            // some css works
-        } else {
-            
-        }
-    }
-</script>
