@@ -14,7 +14,7 @@
         location.replace('../home/home.php');
         </script>
         ";
-        //need to POST name to home.phps
+        //need to POST name to home.php
 
     } else {
         echo "fail";
