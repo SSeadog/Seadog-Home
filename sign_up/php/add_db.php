@@ -9,9 +9,9 @@
     $res=mysqli_query($connect, $sql);
 
     if($res) {
-        echo "등록 성공";
+        echo "<div>등록 성공 로그인해주세용</div>";
 
-        echo "<button onClick=location.replace('../home/home.php')>Click</button>";
+        echo "<button onClick=location.replace('../../login/login.html')>login</button>";
     } else {
         echo "등록 실패";
     }
