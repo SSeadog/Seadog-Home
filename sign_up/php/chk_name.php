@@ -1,6 +1,6 @@
 <?php
 
-    include "../connect_db.php";
+    include "../../connect_db.php";
 
     $name=$_COOKIE['name'];
     $sql="select name from user_tbl where name='$name'";

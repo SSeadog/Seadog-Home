@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>sign up</title>
+    <meta charset="utf-8">
+    <script src="add_form.js"></script>
+</head>
+<body onload="document.getElementById('name').focus();">
+    <div id="logo">Seadog</div>
+    <div>계정 만들기</div>
+    <form name="add_form" action="php/add_db.php" method="post">
+    <div name="container">
+    <div name="name">name</div>
+    <input type="text" id="name" name="name" oninput="chk_name()">
+    <div name="id">id</div>
+    <input type="text" id="id" name="id" oninput="chk_id()">
+    <div name="password">password</div>
+    <input type="password" id="password" name="password" oninput="chk_pw()" onchange="chk_pw_ck()">
+    <div name="pw_ck">password check</div>
+    <input type="password" id="pw_ck" name="pw_ck" onkeyup="chk_pw_ck()">
+    <div><input type="submit" id="submit" name="submit" oninput="next" style="visibility: hidden" disabled=true></div>
+    </form>
+</body>
+</html>
+
+<script>
+    
+    
+
+</script>

@@ -1,5 +1,5 @@
 <?php
-    include "../connect_db.php";
+    include "../../connect_db.php";
 
     $username=$_POST['name'];
     $userid=$_POST['id'];
