@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Make It Fold!</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+      }
+      .target {
+        height: 90%;
+        z-index: 1;
+      }
+      #canvas {
+        position: absolute;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="target"
+        src="../../public/default.png"
+        alt="Make It Fold!"
+        onclick="target_onclick(e)"
+      />
+      <!-- e로는 이벤트 객체가 안넘어감 -->
+      <canvas id="canvas" style="border: 1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.</canvas
+      >
+    </div>
+  </body>
+</html>
+
+<script>
+  var target = document.getElementsByClassName("target")[0];
+  target.onload = function () {
+    var width = target.width;
+    var height = target.height;
+    console.log(width);
+    console.log(height);
+    var canvas = document.getElementById("canvas");
+    canvas.setAttribute("width", width * 1.5);
+    canvas.setAttribute("max-width", screen.width);
+    console.log(screen.width);
+    canvas.setAttribute("height", height);
+  };
+
+  function target_onclick(e) {
+    console.log("1");
+    console.log(findPos(this));
+  }
+
+  function findPos(obj) {
+    var curleft = 0,
+      curtop = 0;
+    console.log("2");
+    if (obj.offsetParent) {
+      do {
+        curleft += obj.offsetLeft;
+        curtop += obj.offsetTop;
+      } while ((obj = obj.offsetParent));
+      return { x: curleft, y: curtop };
+    }
+    return undefined;
+  }
+</script>

@@ -1,5 +1,5 @@
 <?php
-    include "../connect_db.php";
+    include "../../connect_db.php";
     $userid=$_COOKIE['userid'];
     $userpw=$_COOKIE['userpw'];
     $sql="select name from user_tbl where userid='$userid' and passwd='$userpw'";

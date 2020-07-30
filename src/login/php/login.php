@@ -1,6 +1,6 @@
 <?php
 
-    include "../connect_db.php";
+    include "../../connect_db.php";
 
     $userid=$_POST['userid'];
     $userpw=$_POST['userpw'];
@@ -11,10 +11,9 @@
 
     if($info) {
         echo "<script>
-        location.replace('../home/home.php');
+        location.replace('../../home/home.php');
         </script>
         ";
-        //need to POST name to home.php
 
     } else {
         echo "fail";
