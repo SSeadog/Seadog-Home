@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>Make It Fold!</title>
+    <meta charset="utf-8" />
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+      }
+      .img {
+        position: absolute;
+        height: 90%;
+        z-index: 1;
+        visibility: hidden;
+      }
+      #canvas {
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        z-index: 2;
+      }
+      #menu_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #picture_button {
+        width: 200px;
+        height: 100px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img class="img" src="../../public/default.png" alt="Make It Fold!" />
+      <!-- e로는 이벤트 객체가 안넘어감 -->
+      <canvas id="canvas" style="border: 0px none black;">
+        Your browser does not support the HTML5 canvas tag.</canvas
+      >
+    </div>
+    <div id="menu_div">
+      <button id="picture_button" onclick="">Set Picture</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  var img = document.getElementsByClassName("img")[0];
+  var canvas = document.getElementById("canvas");
+  var width = img.width;
+  var height = img.height;
+
+  img.onload = function () {
+    canvas.setAttribute("width", width * 1.75);
+    canvas.setAttribute("height", height * 1.75);
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, width, height, 0, 0, width * 1.75, height * 1.75);
+  };
+
+  canvas.addEventListener("click", split);
+  canvas.myParam = event;
+
+  function split(event) {
+    var Y = event.clientY;
+    var split_canvas = document.createElement("canvas");
+    split_canvas.style.position = "absolute";
+    split_canvas.style.top = "20px";
+    split_canvas.setAttribute("id", "split_canvas");
+    split_canvas.setAttribute("width", width * 1.75);
+    split_canvas.setAttribute("height", Y * 1.75);
+    split_canvas.style.zIndex = "3";
+    var p = document.getElementsByClassName("container")[0];
+    p.appendChild(split_canvas);
+
+    var ctx = canvas.getContext("2d");
+    var img_data = ctx.getImageData(0, 0, width * 1.75, Y);
+    var split_ctx = split_canvas.getContext("2d");
+    split_ctx.putImageData(img_data, 0, 0);
+    ctx.clearRect(0, 0, width * 1.75, Y);
+
+    split_canvas.addEventListener("click", skew_image);
+  }
+  function test() {
+    canvas.removeEventListener("click", split);
+    split_canvas.addEventListener("click", skew_image);
+    split_canvas.removeEventListener("click", test);
+  }
+  function skew_image() {
+    test();
+    var split_canvas = document.getElementById("split_canvas");
+    split_canvas.style.transform = "skewX(30deg)";
+  }
+</script>

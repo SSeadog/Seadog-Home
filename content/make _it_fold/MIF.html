@@ -8,62 +8,62 @@
         align-items: center;
         height: 90%;
       }
-      .target {
+      .img {
+        position: absolute;
         height: 90%;
         z-index: 1;
+        visibility: hidden;
       }
       #canvas {
+        margin-left: auto;
+        margin-right: auto;
         position: absolute;
-        z-index: 0;
+        z-index: 2;
+      }
+      #menu_div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #picture_button {
+        width: 100px;
+        height: 50px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <img
-        class="target"
-        src="../../public/default.png"
-        alt="Make It Fold!"
-        onclick="target_onclick(e)"
-      />
+      <img class="img" src="../../public/default.png" alt="Make It Fold!" />
       <!-- e로는 이벤트 객체가 안넘어감 -->
-      <canvas id="canvas" style="border: 1px solid #d3d3d3;">
+      <canvas id="canvas" style="border: 0px none black;">
         Your browser does not support the HTML5 canvas tag.</canvas
       >
+    </div>
+    <div id="menu_div">
+      <button id="picture_button" onclick="">Set Picture</button>
     </div>
   </body>
 </html>
 
 <script>
-  var target = document.getElementsByClassName("target")[0];
-  target.onload = function () {
-    var width = target.width;
-    var height = target.height;
-    console.log(width);
-    console.log(height);
-    var canvas = document.getElementById("canvas");
-    canvas.setAttribute("width", width * 1.5);
-    canvas.setAttribute("max-width", screen.width);
-    console.log(screen.width);
+  var img = document.getElementsByClassName("img")[0];
+  var canvas = document.getElementById("canvas");
+  img.onload = function () {
+    var width = img.width;
+    var height = img.height;
+
+    canvas.setAttribute("width", width);
     canvas.setAttribute("height", height);
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, width, height, 0, 0, width, height);
   };
 
-  function target_onclick(e) {
-    console.log("1");
-    console.log(findPos(this));
-  }
-
-  function findPos(obj) {
-    var curleft = 0,
-      curtop = 0;
-    console.log("2");
-    if (obj.offsetParent) {
-      do {
-        curleft += obj.offsetLeft;
-        curtop += obj.offsetTop;
-      } while ((obj = obj.offsetParent));
-      return { x: curleft, y: curtop };
-    }
-    return undefined;
-  }
+  canvas.onclick = function (e) {
+    //alert(e.clientY);
+    var ctx = canvas.getContext("2d");
+    ctx.moveTo(0, e.clientY);
+    ctx.lineTo(canvas.width, e.clientY);
+    ctx.stroke();
+    canvas.style.transform = "rotate(20deg)";
+  };
 </script>
