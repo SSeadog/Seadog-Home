@@ -20,7 +20,8 @@ function chk_id() {
 
         document.getElementById("subtitle").innerHTML = "password";
 
-        document.getElementById("username").innerHTML = this.responseText;
+        document.getElementById("username").innerHTML =
+          "Hi!! " + this.responseText;
 
         document.getElementById("userid").value = "";
         document.getElementById("userid").setAttribute("id", "userpw");

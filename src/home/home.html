@@ -2,10 +2,9 @@
 <html>
   <head>
     <title>Seadog</title>
-    <script src="home.js"></script>
     <link href="home.css" type="text/css" rel="stylesheet" />
   </head>
-  <body onload="chk_login()">
+  <body onload="chkLogin()">
     <div id="login">
       <input
         type="button"
@@ -19,16 +18,15 @@
       <span class="logo">Seadog</span>
     </div>
     <div id="content_box">
-      <div class="content">
-        <a href="../../content/make _it_swing/MIS_mobile.html">
-          <img
-            class="content_img"
-            src="../../public/seadog.png"
-            alt="Make Something Fold!"
-          />
-        </a>
+      <div class="content" onclick="isMobile()">
+        <img
+          class="content_img"
+          src="../../public/seadog.png"
+          alt="Make Something Fold!"
+        />
         <div class="content_title">Make Something Swing!</div>
       </div>
     </div>
+    <script src="home.js"></script>
   </body>
 </html>
