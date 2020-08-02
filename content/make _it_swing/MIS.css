@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+.img {
+  position: absolute;
+  height: 90%;
+  z-index: 1;
+  visibility: hidden;
+}
+#canvas {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  z-index: 2;
+}
+#menu_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
