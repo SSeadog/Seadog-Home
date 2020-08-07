@@ -2,23 +2,25 @@
 <head>
     <title>sign up</title>
     <meta charset="utf-8">
-    <script src="add_form.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="add_form.css" type="text/css" rel="stylesheet" />
 </head>
 <body onload="document.getElementById('name').focus();">
     <div id="logo">Seadog</div>
-    <div>계정 만들기</div>
+    <div id="make_account_text">계정 만들기</div>
     <form name="add_form" action="php/add_db.php" method="post">
-    <div name="container">
-    <div name="name">name</div>
+    <div class="container">
+    <div class="text">name</div>
     <input type="text" id="name" name="name" oninput="chk_name()">
-    <div name="id">id</div>
+    <div class="text">id</div>
     <input type="text" id="id" name="id" oninput="chk_id()">
-    <div name="password">password</div>
+    <div class="text">password</div>
     <input type="password" id="password" name="password" oninput="chk_pw()" onchange="chk_pw_ck()">
-    <div name="pw_ck">password check</div>
+    <div class="text">password check</div>
     <input type="password" id="pw_ck" name="pw_ck" onkeyup="chk_pw_ck()">
-    <div><input type="submit" id="submit" name="submit" oninput="next" style="visibility: hidden" disabled=true></div>
+    <div id="submit_box"><input type="submit" id="submit" name="submit" oninput="next" style="visibility: hidden" disabled=true></div>
     </form>
+    <script src="add_form.js"></script>
 </body>
 </html>
 
