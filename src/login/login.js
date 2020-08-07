@@ -43,7 +43,7 @@ function chk_pw() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      if (this.responseText == username) {
+      if ("Hi!! " + this.responseText == username) {
         location.replace("../home/home.html");
       } else {
         console.log("실패"); //일치 비번 없다
