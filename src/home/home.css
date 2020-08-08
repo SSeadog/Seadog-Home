@@ -2,24 +2,33 @@
   font-size: 20px;
 }
 body {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: skyblue;
+  background: linear-gradient(144deg, #1cb5f2 30%, #000851 100%);
 }
 #lgBtn {
   position: absolute;
   top: 1%;
   right: 1%;
   width: 10%;
-  min-width: 150px;
+  min-width: 145px;
   height: 5%;
-  min-height: 50px;
+  min-height: 45px;
   border: 0px;
+  border-radius: 5px;
   font-size: 30px;
   font-weight: 600;
-  color: white;
-  background-color: deepskyblue;
+  color: #fff;
+  background: rgb(0, 172, 238);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 172, 238, 1) 0%,
+    rgba(2, 126, 251, 1) 100%
+  );
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 }
 #logo_container {
   margin: 5%;
@@ -35,8 +44,8 @@ body {
   align-items: center;
   width: 90%;
   height: 700px;
-  /* height %로 수정해야함 */
   border: 5px solid white;
+  border-radius: 20px;
   padding: 20px;
 }
 .content {
