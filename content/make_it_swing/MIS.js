@@ -16,6 +16,7 @@ function setimage() {
 }
 
 function split(event) {
+  console.log(event.clientY);
   createSplitCanvas(event.clientY);
   splitImage(event.clientY);
   var ctx = canvas.getContext("2d");
@@ -26,11 +27,11 @@ function split(event) {
 function createSplitCanvas(Y) {
   var split_canvas = document.createElement("canvas");
   split_canvas.style.position = "absolute";
-  split_canvas.style.top = "1px";
+  split_canvas.style.top = "9px";
   split_canvas.setAttribute("id", "split_canvas");
   split_canvas.setAttribute("width", width);
   split_canvas.setAttribute("height", Y);
-  split_canvas.style.zIndex = "3";
+  split_canvas.style.zIndex = "10";
   var parent = document.getElementsByClassName("container")[0];
   parent.appendChild(split_canvas);
 }
@@ -47,8 +48,11 @@ function removeAndAddEventListener() {
   split_canvas.addEventListener("mousemove", swing);
   split_canvas.myParam = event;
   split_canvas.addEventListener("mousedown", down);
+  split_canvas.myParam = event;
   split_canvas.addEventListener("mouseup", up);
+  split_canvas.myParam = event;
   split_canvas.addEventListener("mouseout", out);
+  split_canvas.myParam = event;
 }
 
 var startX = 0;

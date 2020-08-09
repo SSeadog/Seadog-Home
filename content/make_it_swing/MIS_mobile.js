@@ -26,11 +26,11 @@ function split(event) {
 function createSplitCanvas(Y) {
   var split_canvas = document.createElement("canvas");
   split_canvas.style.position = "absolute";
-  split_canvas.style.top = "0px";
+  split_canvas.style.top = "10px";
   split_canvas.setAttribute("id", "split_canvas");
   split_canvas.setAttribute("width", width);
   split_canvas.setAttribute("height", Y);
-  split_canvas.style.zIndex = "3";
+  split_canvas.style.zIndex = "10";
   var parent = document.getElementsByClassName("container")[0];
   parent.appendChild(split_canvas);
 }

@@ -1,18 +1,23 @@
 body {
-  height: 100%;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
 }
 .container {
   display: flex;
   justify-content: center;
-  height: 90%;
 }
 .img {
   position: absolute;
-  height: 90%;
-  z-index: 1;
+  z-index: 3;
   visibility: hidden;
 }
-#canvas {
+.canvas_top {
+  position: absolute;
+  z-index: 5;
+}
+.canvas_bottom {
   position: absolute;
   z-index: 5;
 }
