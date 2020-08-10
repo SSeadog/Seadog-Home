@@ -15,7 +15,7 @@ body {
 }
 .canvas_top {
   position: absolute;
-  z-index: 5;
+  z-index: 10;
 }
 .canvas_bottom {
   position: absolute;
