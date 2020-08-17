@@ -10,6 +10,7 @@ console.log(height);
 
 img.addEventListener("load", setCanvas());
 
+// 한번씩 모바일에서 그림이 보이지 않을 때가 있음(새로고침하면 보임)
 function setCanvas() {
   canvas_top.width = width * 0.8;
   canvas_top.height = height * 0.8 * 0.5;
@@ -22,17 +23,36 @@ function setCanvas() {
 
 function drawTopImage() {
   var ctx = canvas_top.getContext("2d");
-  ctx.drawImage(img, 0, 0, width, height * 0.5, 0, 0, width * 0.8, height * 0.8 * 0.5);
+  ctx.drawImage(
+    img,
+    0,
+    0,
+    width,
+    height * 0.5,
+    0,
+    0,
+    width * 0.8,
+    height * 0.8 * 0.5
+  );
 }
 
 function drawBottomImage() {
   var ctx = canvas_bottom.getContext("2d");
-  ctx.drawImage(img, 0, height * 0.5 -2, width, height * 0.5 +2, 0, height * 0.8 * 0.5 -2 , width *0.8, height * 0.8 * 0.5 +2);
-
+  ctx.drawImage(
+    img,
+    0,
+    height * 0.5 - 2,
+    width,
+    height * 0.5 + 2,
+    0,
+    height * 0.8 * 0.5 - 2,
+    width * 0.8,
+    height * 0.8 * 0.5 + 2
+  );
 }
 
 function addEventListeners() {
-  if(isMobile()) {
+  if (isMobile()) {
     canvas_top.addEventListener("touchmove", swingByTouch);
     canvas_top.myParam = event;
   } else {
@@ -58,7 +78,7 @@ function isMobile() {
   ) {
     return true;
   }
-    return false;
+  return false;
 }
 
 var startX = 0;
@@ -87,7 +107,9 @@ function swing(e) {
   }
 }
 
+// 이미지 변경으로 인해 스크린 너비가 바뀌어서 원치않은 스크롤이 발생함
 function swingByTouch(e) {
+  console.log(e.touches[0].clientX / 2);
   if (startX == 0) {
     startX = e.touches[0].clientX;
   }
