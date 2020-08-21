@@ -211,14 +211,12 @@ function draw() {
       lives--;
       if (!lives) {
         // 죽으면 모달 띄우기
-        var modal = document.getElementById("modal");
+        var scoreText = document.getElementById("score");
+        var retryBtn = document.getElementsByClassName("retry")[0];
+        scoreText.innerHTML = score;
+        chkLowRank();
+        retryBtn.style.visibility = "visible";
         modal.style.display = "block";
-
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        };
         // 죽으면 멈추게 하고 싶은데 방법을 모르겠음 일단 정의되지 않은 함수를 불러서 에러가 발생해서 멈추게 했고
         // 새로고침해서 재시작 가능하게 했음
         finish();
@@ -265,13 +263,80 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-var add = document.getElementsByClassName("add")[0];
+var modal = document.getElementById("modal");
+var addBtn = document.getElementsByClassName("add")[0];
 var retryBtn = document.getElementsByClassName("retry")[0];
+
+var addModal = document.getElementsByClassName("add_rank")[0];
+var addRankBtn = document.getElementsByClassName("add")[1];
+
+addBtn.addEventListener("click", add);
 retryBtn.addEventListener("click", retry);
+addRankBtn.addEventListener("click", registerRank);
+
+function add() {
+  modal.style.display = "none";
+  addModal.style.display = "block";
+}
 
 function retry() {
   modal.style.display = "none";
   document.location.reload();
+}
+
+function registerRank() {
+  var userName = document.getElementById("user_name").value;
+  if (userName.length == 3) {
+    console.log("good!");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        if (this.responseText) {
+          console.log(this.responseText);
+        }
+      }
+    };
+    xhttp.open(
+      "GET",
+      "php/register_rank.php?username=" + userName + "&score=" + score,
+      true
+    );
+    xhttp.send();
+    document.location.href = "rank.html";
+  } else {
+    var text = document.getElementsByClassName("text")[1];
+    text.style.color = "red";
+    text.style.fontWeight = "bold";
+    document.getElementById("user_name").value = "";
+  }
+}
+
+function chkLowRank() {
+  var message = document.getElementById("message");
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      if (this.responseText) {
+        var result = this.responseText.split(",");
+        result[0].replace("'", "").replace("'", "");
+        result[1].replace("'", "").replace("'", "");
+        result[0] = parseInt(result[0]);
+        result[1] = parseInt(result[1]);
+        if (result[0] < 50) {
+          message.innerHTML = "You Can Add Your Records!";
+          addBtn.style.visibility = "visible";
+        } else if (score > result[1]) {
+          message.innerHTML = "You Can Add Your Records!";
+          addBtn.style.visibility = "visible";
+        } else {
+          message.innerHTML = "Break More Blocks!";
+          addBtn.style.visibility = "hidden";
+        }
+      }
+    }
+  };
+  xhttp.open("GET", "php/get_lowest_rank.php", true);
+  xhttp.send();
 }
 
 draw();

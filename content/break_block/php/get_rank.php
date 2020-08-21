@@ -5,7 +5,7 @@
     
     $rows = [];
     while($row=mysqli_fetch_array($res)) {
-        $rows[]= $row;
+        $rows[] = $row;
     }
 
     foreach($rows as $row) {

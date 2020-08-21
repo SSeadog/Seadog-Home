@@ -12,15 +12,24 @@
     <div id="modal" class="modal">
       <div class="modal-content">
         <div class="score_container">
-          <span id="score">999</span><span class="text"> score!</span>
+          <span id="score">999</span><span> score!</span>
         </div>
         <div class="rank_container">
-          <span>You're gonna be <span id="rank">1st!</span></span>
+          <span id="message"></span>
         </div>
         <div id="btn_container">
           <button class="add btn">ADD</button
           ><button class="retry btn">RETRY</button>
         </div>
+      </div>
+    </div>
+    <!-- ADD RANK 모달 -->
+    <div class="modal add_rank">
+      <div class="modal-content">
+        <div class="text">Tell me your name</div>
+        <div class="text">in 3 words!</div>
+        <input type="text" id="user_name" placeholder="AAA" />
+        <button id="add_rank" class="add btn">ADD</button>
       </div>
     </div>
     <script src="../../node_modules/body-scroll-lock/lib/bodyScrollLock.js"></script>
