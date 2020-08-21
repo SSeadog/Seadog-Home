@@ -88,7 +88,7 @@ function collisionDetection() {
       }
     }
   }
-  // 그릴 때 모두 status가 0 이어서 cnt가 증가하지 않았다면
+  // 그릴 때 status가 모두 0 이어서 cnt가 증가하지 않았다면
   if (cnt == 0) {
     for (var c = 0; c < brickColumnCount; c++) {
       for (var r = 0; r < brickRowCount; r++) {

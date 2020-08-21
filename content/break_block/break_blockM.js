@@ -28,7 +28,7 @@ var score = 0;
 var itemX = canvas.width;
 var itemY = canvas.height;
 
-var lives = 3;
+var lives = 1;
 
 var bricks = [];
 for (var c = 0; c < brickColumnCount; c++) {
@@ -210,8 +210,18 @@ function draw() {
     } else {
       lives--;
       if (!lives) {
-        alert("GAME OVER");
-        document.location.reload();
+        // 죽으면 모달 띄우기
+        var modal = document.getElementById("modal");
+        modal.style.display = "block";
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+        // 죽으면 멈추게 하고 싶은데 방법을 모르겠음 일단 정의되지 않은 함수를 불러서 에러가 발생해서 멈추게 했고
+        // 새로고침해서 재시작 가능하게 했음
+        finish();
       } else {
         x = canvas.width / 2;
         y = canvas.height - 30;
@@ -228,7 +238,6 @@ function draw() {
     itemY < canvas.height &&
     itemY > canvas.height - paddleHeight - 80
   ) {
-    console.log("got");
     getItem();
   }
 
@@ -255,4 +264,14 @@ function draw() {
 
   requestAnimationFrame(draw);
 }
+
+var add = document.getElementsByClassName("add")[0];
+var retryBtn = document.getElementsByClassName("retry")[0];
+retryBtn.addEventListener("click", retry);
+
+function retry() {
+  modal.style.display = "none";
+  document.location.reload();
+}
+
 draw();

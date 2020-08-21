@@ -8,6 +8,21 @@
   <body id="body">
     <canvas id="myCanvas" width="960" height="1200"></canvas>
     <button onclick="location.href='rank.html'">score</button>
+    <!-- 모달 -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="score_container">
+          <span id="score">999</span><span class="text"> score!</span>
+        </div>
+        <div class="rank_container">
+          <span>You're gonna be <span id="rank">1st!</span></span>
+        </div>
+        <div id="btn_container">
+          <button class="add btn">ADD</button
+          ><button class="retry btn">RETRY</button>
+        </div>
+      </div>
+    </div>
     <script src="../../node_modules/body-scroll-lock/lib/bodyScrollLock.js"></script>
     <script src="break_blockM.js"></script>
   </body>
