@@ -1,6 +1,6 @@
 <?php
     include "connect_db.php";
-    $sql="select RANK, NAME, SCORE from break_block_rank";
+    $sql="select RANK, NAME, SCORE from break_block_rank order by rank";
     $res=mysqli_query($connect,$sql);
     
     $rows = [];
