@@ -14,6 +14,9 @@
         color: white;
         text-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
       }
+      table {
+        margin-bottom: 30px;
+      }
       thead > tr > td {
         padding: 30px;
         font-size: 100px;
@@ -23,6 +26,11 @@
         font-size: 50px;
         color: white;
         text-align: center;
+      }
+      .btn {
+        width: 200px;
+        height: 50px;
+        font-size: 35px;
       }
     </style>
   </head>
@@ -38,6 +46,7 @@
       </thead>
       <tbody id="rank_tr"></tbody>
     </table>
+    <button class="btn" onclick="location.href='indexM.html'">Play!</button>
     <script>
       var tbody = document.getElementById("rank_tr");
 
