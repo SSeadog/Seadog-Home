@@ -239,9 +239,6 @@ function draw() {
     getItem();
   }
 
-  x += dx;
-  y += dy;
-
   drawBricks();
   drawBall();
   drawPaddle();
@@ -259,6 +256,9 @@ function draw() {
     }
     drawItem();
   }
+
+  x += dx;
+  y += dy;
 
   requestAnimationFrame(draw);
 }
@@ -287,12 +287,11 @@ function retry() {
 function registerRank() {
   var userName = document.getElementById("user_name").value;
   if (userName.length == 3) {
-    console.log("good!");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         if (this.responseText) {
-          console.log(this.responseText);
+          // php안에서 db에 등록하고 나옴
         }
       }
     };
@@ -302,7 +301,7 @@ function registerRank() {
       true
     );
     xhttp.send();
-    document.location.href = "rank.html";
+    document.location.replace("rank.html");
   } else {
     var text = document.getElementsByClassName("text")[1];
     text.style.color = "red";
