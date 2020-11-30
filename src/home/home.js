@@ -8,6 +8,7 @@ function chkLogin() {
         p.removeChild(lgBtn);
         var usernameSpan = document.createElement("span");
         usernameSpan.innerHTML = this.responseText;
+        usernameSpan.style.color = "white";
         p.appendChild(usernameSpan);
         var logoutBtn = document.createElement("input");
         logoutBtn.type = "button";
