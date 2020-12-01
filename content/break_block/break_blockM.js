@@ -298,7 +298,7 @@ function registerRank() {
     xhttp.open(
       "GET",
       "php/register_rank.php?username=" + userName + "&score=" + score,
-      true
+      false
     );
     xhttp.send();
     document.location.replace("rank.html");
